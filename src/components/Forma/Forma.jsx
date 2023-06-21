@@ -7,7 +7,7 @@ import { addContactThunk } from 'redux/sliceContact';
 export const Forma = () => {
   const [name, setName] = useState('');
   const [number, setNumber] = useState('');
-  const contactsValue = useSelector(state => state.contacts);
+  const contacts = useSelector(state => state.contacts);
   const dispatch = useDispatch();
 
   const addContacts = (name, number) => {
@@ -20,7 +20,7 @@ export const Forma = () => {
 
   const hendleSubmit = event => {
     event.preventDefault();
-    const nameContacts = contactsValue.map(el => el.name.toLowerCase());
+    const nameContacts = contacts.map(el => el.name.toLowerCase());
     if (nameContacts.includes(name.toLowerCase())) {
       alert(`${name} is in your contacts`);
     } else {
