@@ -6,14 +6,14 @@ import { addContactThunk } from 'redux/sliceContact';
 
 export const Forma = () => {
   const [name, setName] = useState('');
-  const [number, setNumber] = useState('');
+  const [phone, setPhone] = useState('');
   const contacts = useSelector(state => state.contacts);
   const dispatch = useDispatch();
 
   const addContacts = (name, number) => {
     const contact = {
       name,
-      number,
+      phone,
     };
     dispatch(addContactThunk(contact));
   };
@@ -24,7 +24,7 @@ export const Forma = () => {
     if (nameContacts.includes(name.toLowerCase())) {
       alert(`${name} is in your contacts`);
     } else {
-      addContacts(name, number);
+      addContacts(name, phone);
       reset();
     }
   };
@@ -32,12 +32,12 @@ export const Forma = () => {
   const hendleNameTelChange = event => {
     const { name, value } = event.currentTarget;
     if (name === 'name') setName(value);
-    if (name === 'number') setNumber(value);
+    if (name === 'phone') setPhone(value);
   };
 
   const reset = () => {
     setName('');
-    setNumber('');
+    setPhone('');
   };
 
   return (
@@ -58,7 +58,7 @@ export const Forma = () => {
         </label>
 
         <label>
-          Number
+          Phone
           <Input
             type="tel"
             name="number"
@@ -66,7 +66,7 @@ export const Forma = () => {
             pattern="^(\+?[0-9.\(\)\-\s]*)$"
             title="Phone number must be digits and can contain spaces, dashes, parentheses and can start with +"
             required
-            value={number}
+            value={phone}
             onChange={hendleNameTelChange}
           />
         </label>
@@ -75,3 +75,4 @@ export const Forma = () => {
     </>
   );
 };
+
