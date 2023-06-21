@@ -1,8 +1,8 @@
 import { useState } from 'react';
 import { Input, FormBtn } from "./Forma.styled";
 import { useSelector, useDispatch } from 'react-redux';
-import { addContact } from 'redux/sliceContact';
-import { nanoid } from 'nanoid';
+import { addContactThunk } from 'redux/sliceContact';
+
 
 export const Forma = () => {
   const [name, setName] = useState('');
@@ -12,11 +12,10 @@ export const Forma = () => {
 
   const addContacts = (name, number) => {
     const contact = {
-      id: nanoid(),
       name,
       number,
     };
-    dispatch(addContact(contact));
+    dispatch(addContactThunk(contact));
   };
 
   const hendleSubmit = event => {
