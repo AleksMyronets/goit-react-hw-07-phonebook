@@ -1,6 +1,5 @@
 import { ContactsListEl, ContactsList, ContactsBtn } from "./Contacts.styled"
-import { useSelector } from 'react-redux';
-import { useDispatch } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
 import { useEffect } from 'react';
 import { getContactsThunk } from 'redux/sliceContact';
 import { deleteContactThunk } from 'redux/sliceContact';
@@ -44,5 +43,3 @@ export const Contacts = () => {
     </>
   );
 }
-
- 
