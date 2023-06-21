@@ -1,6 +1,6 @@
-import { Contacts } from '../Contacts';
-import { Filter } from '../Filter';
-import { Forma } from '../Forma';
+import { Contacts } from '../Contacts/Contacts';
+import { Filter } from '../Filter/Filter';
+import { Forma } from '../Forma/Forma';
 import { ContainerForm } from './App.styled';
 
 export const App = () => {
@@ -14,3 +14,4 @@ export const App = () => {
     </ContainerForm>
   );
 };
+
