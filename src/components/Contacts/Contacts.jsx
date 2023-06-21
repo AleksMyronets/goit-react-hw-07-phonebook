@@ -13,7 +13,7 @@ export const Contacts = () => {
   const dispatch = useDispatch();
 
   const normalizedFilter = filterValue.toLowerCase();
-  const visibleContacts = contactsValue.filter(contact =>
+  const visibleContacts = contacts.filter(contact =>
     contact.name.toLowerCase().includes(normalizedFilter)
   );
 
