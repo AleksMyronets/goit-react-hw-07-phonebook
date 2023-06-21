@@ -1,12 +1,15 @@
 import { ContactsListEl, ContactsList, ContactsBtn } from "./Contacts.styled"
 import { useSelector } from 'react-redux';
 import { useDispatch } from 'react-redux';
-import { deleteContacts } from 'redux/sliceContact';
+import { useEffect } from 'react';
+import { getContactsThunk } from 'redux/sliceContact';
+import { deleteContactThunk } from 'redux/sliceContact';
 
 
 export const Contacts = () => {
-  const contactsValue = useSelector(state => state.contacts);
+  const { contacts } = useSelector(state => state.contacts);
   const filterValue = useSelector(state => state.filter);
+  const { isLoading } = useSelector(state => state.contacts);
   const dispatch = useDispatch();
 
   const normalizedFilter = filterValue.toLowerCase();
@@ -15,11 +18,17 @@ export const Contacts = () => {
   );
 
   const deleteContact = contactId => {
-    dispatch(deleteContacts(contactId));
+    dispatch(deleteContactThunk(contactId));
   };
+
+   useEffect(() => {
+     dispatch(getContactsThunk());
+   }, [dispatch]);
+
 
   return (
     <>
+      {isLoading && <h4>Loading...</h4>}
       <ContactsList>
         {visibleContacts.map(el => {
           return (
